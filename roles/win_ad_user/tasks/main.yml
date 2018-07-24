@@ -1,0 +1,19 @@
+---
+# Role to create users in AD
+- name: Create windows group in AD
+  win_domain_group:
+      name: "{{ item.group_name }}"
+      scope: "{{ item.group_scope }}"
+      state: present
+  with_items: "{{ user_info }}"      
+
+- name: Create windows users in AD 
+  win_domain_user:
+      name: "{{ item.name }}"
+      firstname: "{{ item.firstname }}"
+      surname: "{{ item.surname }}"
+      password: "{{ item.password }}"
+      email: '"{{ item.name }}"@ad1..example.opentlc.com"'
+      groups: "{{ item.group_name }}"
+      state: present
+  with_items: "{{ user_info }}"                                   

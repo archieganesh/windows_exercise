@@ -1,0 +1,9 @@
+# main playbook
+- hosts: windows 
+  gather_facts: true
+
+  tasks:
+  - include_vars: ./my_ad_vars.yml
+  - include_role: 
+          name: win_ad_install
+

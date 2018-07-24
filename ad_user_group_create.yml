@@ -1,0 +1,10 @@
+---
+# Playbook to create AD users
+- hosts: windows
+  gather_facts: true
+
+  vars_files: 
+    - ./create_user_vars.yml
+
+  roles:
+    - win_ad_user

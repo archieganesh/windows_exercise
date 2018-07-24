@@ -1,0 +1,9 @@
+---
+# tasks file for win_package_install
+- name: Install packages using win_chocolatey
+  win_chocolatey:
+        name: '{{ item }}'
+        params: "{{ parameters }}"
+        state: present
+  with_items:
+      - "{{ package_name }}"
